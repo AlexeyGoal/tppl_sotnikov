@@ -1,15 +1,15 @@
 all: average
 
-average: average.o
-	gcc -no-pie average.o -o average
+average: main.o
+	gcc -no-pie main.o -o average
 
-average.o: average.asm
-	nasm -f elf64 average.asm -o average.o
+main.o: main.asm
+	nasm -f elf64 main.asm -o main.o
 
 run: average
 	./average data.txt
 
 clean:
-	rm -f average average.o
+	rm -f average main.o
 
 .PHONY: all run clean
