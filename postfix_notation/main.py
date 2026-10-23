@@ -9,12 +9,15 @@ def div(a, b):
         raise ZeroDivisionError("You cannot divide by zero.")
     return a / b
 
+def pown(a,b): return a**b
+
 
 operators = {
     "+": add,
     "-": sub,
     "*": mul,
-    "/": div
+    "/": div,
+    "!": pown
 }
 
 
@@ -38,7 +41,7 @@ def apply_tilde(stack):
         stack.clear()
         stack.append(res)
     else:
-
+        
         res = abs(a - b)
         stack.append(res)
 
@@ -74,9 +77,11 @@ def solution(tokens):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("The expression was not written, try again(python main.py <expression>)")
+    if len(sys.argv) != 2:
+        print("arguments passed incorrectly, try again")
         sys.exit(1)
+
+    
 
     expr = " ".join(sys.argv[1:])
     tokens = expr.split()
